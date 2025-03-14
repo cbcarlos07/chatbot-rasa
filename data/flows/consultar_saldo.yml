@@ -1,0 +1,16 @@
+version: "3.1"
+
+nlu:
+  - intent: pergunta_qual_saldo
+    examples: |
+      - Qual é meu saldo?
+      - Quero saber qual é meu saldo?
+      - Quanto já ganhei?
+      - Quero consultar meu saldo
+      - Saldo
+      - saldo
+rules:
+  - rule: pergunta qual o saldo
+    steps:
+      - intent: pergunta_qual_saldo
+      - action: utter_saldo
