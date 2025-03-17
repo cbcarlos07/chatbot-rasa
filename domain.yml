@@ -8,6 +8,8 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - want_more_help
+  - no_more_help
 
 actions:
   - consultar_saldo
@@ -15,6 +17,8 @@ actions:
 responses:
   utter_greet:
   - text: "Hey! How are you?"
+  - text: "Digite o que você quer saber"
+  - text: "Certo. Me envie o que deseja saber"
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -35,8 +39,13 @@ responses:
   utter_ask_recipient:
   - text: "Who would you like to send money to?"
 
-  utter_saldo:
-  - text: "Opa! Ainda não estou treinado pra responder esta pergunta"
+  utter_balance:
+  - text: "Opa! Ainda não estou treinado pra responder esta pergunta \n Ajudo em algo mais?"
+    buttons:
+      - title: "Sim"
+        payload: "/want_more_help"
+      - title: "Não"
+        payload: "/no_more_help"
 
 
 session_config:

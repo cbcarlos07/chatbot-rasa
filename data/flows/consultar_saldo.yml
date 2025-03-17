@@ -1,7 +1,7 @@
 version: "3.1"
 
 nlu:
-  - intent: pergunta_qual_saldo
+  - intent: ask_about_balance
     examples: |
       - Qual é meu saldo?
       - Quero saber qual é meu saldo?
@@ -9,8 +9,32 @@ nlu:
       - Quero consultar meu saldo
       - Saldo
       - saldo
+  - intent: want_more_help
+    examples: |
+      - sim
+      - quero mais ajuda
+      - sim, preciso de mais informações
+      - sim, por favor
+      
+  - intent: no_more_help
+    examples: |
+      - não
+      - não preciso de mais ajuda
+      - não, obrigado
+      - já tenho o que precisava
+  
 rules:
-  - rule: pergunta qual o saldo
-    steps:
-      - intent: pergunta_qual_saldo
-      - action: utter_saldo
+- rule: pergunta qual o saldo
+  steps:
+    - intent: ask_about_balance
+    - action: utter_balance
+
+- rule: usuário quer mais ajuda após consulta de saldo
+  steps:
+  - intent: want_more_help
+  - action: utter_greet
+
+- rule: usuário não quer mais ajuda após consulta de saldo
+  steps:
+    - intent: no_more_help
+    - action: utter_goodbye
